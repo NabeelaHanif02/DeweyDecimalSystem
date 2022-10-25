@@ -17,9 +17,11 @@ namespace DeweyDecimalSystem
         public Form1()
         {
             InitializeComponent();
+            btnHome.Enabled = false;//this will disable home button when its on the form home
+            lblPoints.Text = ListClass.points.Sum(item => item.Point1).ToString(); //this will display the sum of al the users poiny in the home form
             //lblPoints.Text = Points.Point.ToString();
 
-           
+
         }
 
         private void btnReplaceBooks_Click(object sender, EventArgs e)
@@ -32,7 +34,10 @@ namespace DeweyDecimalSystem
 
         private void btnIdenAreas_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("COMING SOON!");
+            //this will enable identifying area button
+            IdentifyingAreas a = new IdentifyingAreas();
+            this.Hide();
+            a.Show();
         }
 
         private void btnFindCallNum_Click(object sender, EventArgs e)
@@ -42,9 +47,12 @@ namespace DeweyDecimalSystem
 
         private void btnRwards_Click(object sender, EventArgs e)
         {
+           //this will open rewards page
             Rewards r = new Rewards();
             this.Hide();
             r.Show();
         }
+
+        
     }
 }

@@ -20,6 +20,7 @@ namespace DeweyDecimalSystem
         public string[] arr1 = new string[10];
         public string[] arr2 = new string[10];
         public List<string> list, list2;
+        int point = 0;
         
       
      
@@ -36,7 +37,7 @@ namespace DeweyDecimalSystem
             listBox1.Items.Clear();
             listBox2.Items.Clear();
             callNumbers.Clear();
-            lblPnts.Text = Points.point.ToString();
+            lblPnts.Text = point.ToString();
 
 
 
@@ -48,7 +49,8 @@ namespace DeweyDecimalSystem
 
             for (var a = 0; a < 10; a++)
             {
-                callNum += "00";
+                callNum += "" + RNG1.Next(0, 9);
+                callNum += "" + RNG1.Next(0, 9);
                 callNum += "" + RNG1.Next(0, 9);
                 callNum += ".";//wait
                 for (var k = 0; k < 2; k++)
@@ -62,6 +64,8 @@ namespace DeweyDecimalSystem
 
                 }
 
+                CallNumbers c = new CallNumbers(callNum);
+                ListClass.callnum.Add(c);
 
                 callNumbers.Add(callNum); //this will store each call number in an array list
                 callNum = "";
@@ -187,10 +191,12 @@ namespace DeweyDecimalSystem
                 {
                 MessageBox.Show("" + br.ToString() + "\n The order is correct");
                 pictureBox1.Visible = true;
-                    Points.Point = 15;
-                    MessageBox.Show("CONGRATULATIONS YOU WON " + Points.Point+ " POINTS!" + " \n" + "Check rewards for achievements!");
+                    point = 15;
+                    Points p = new Points(point);
+                    ListClass.points.Add(p);
+                    MessageBox.Show("CONGRATULATIONS YOU WON " + point+ " POINTS!" + " \n" + "Check rewards for achievements!");
                     btnRestart.Hide();
-                    lblPnts.Text = Points.point.ToString();
+                    lblPnts.Text = point.ToString();
 
 
 
@@ -217,6 +223,11 @@ namespace DeweyDecimalSystem
             Form1 f = new Form1();
             this.Close();
             f.Show();
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
         }
 

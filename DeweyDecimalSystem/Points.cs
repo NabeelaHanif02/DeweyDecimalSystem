@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace DeweyDecimalSystem
 {
-   
-    public  static class Points
+   //THIS CLASS WILL BE USED TO ADD POINTS TO OUR LIST OF POINTS
+    public  class Points
     {
-        public static int point;
+         int point;
 
-        public static int Point { get => point; set => point = value; }
+        public Points(int point)
+        {
+            this.Point1 = point;
+        }
+
+       
+        public int Point1 { get => point; set => point = value; }
+       
     }
+
+   
 }

@@ -13,19 +13,19 @@ namespace DeweyDecimalSystem
     public partial class IdentifyingAreas : Form
     {
         //THIS ARRAY WILL BE USED TO COMPARE, AND GRAB POSITIONS FOR COMBOBOXES, AND FILL METHODS AND CHECK METHODS
-        public string[] desc = ListClass.dictionaries.Select(kvp => kvp.Value).ToArray();
+        public string[] description = ListClass.dictionaries.Select(kvp => kvp.Value).ToArray();
       
         //BOTH OF THIS ARRAYS REPRESENT QUESTIONS AND ASNWERS THAT WE WILL USE TO STORE OUR QUESTIONS AND NSWERS COMING FROM BOTH CLASSES THAT WILL BE INSTANTIATED
-        public string[] ans= new string[7];
-        public string[] ques = new string[4];
+        public string[] answer= new string[7];
+        public string[] question = new string[4];
 
         //THIS ARRAY WILL JUST FILL THE COMBOBOXES
         public string[] cmbVal= new string[7] {"A","B","C","D", "E","F","G"};
 
         //THIS BOTH CLASSES THAT WE INSTANTIATED EACH HAS SIMILAR METHODS TO FILL, MATCH AND CHECK, EXCEPT ONE IS FOR IDENTIFYING CALL NUMBERS, WHEN CALL NUMBERS ARE THE QUESTIONS
         //AND OTHER IS FOR IDENTIFYING DESCRIPTIONS WHEN THE DESCRIPTIONS ARE THE QUESTIONS
-        IdentifyingCallNum icall = new IdentifyingCallNum();
-        IdentifyingDesc iDesc = new IdentifyingDesc();
+        IdentifyingCallNum icallNum = new IdentifyingCallNum();
+        IdentifyingDesc iDescription = new IdentifyingDesc();
         
 
 
@@ -43,23 +43,23 @@ namespace DeweyDecimalSystem
             btnNxtD.Show();//when descriptions are questions
 
 
-            ques = icall.fill();//we call the method fill to fill the questions
+            question = icallNum.fill();//we call the method fill to fill the questions
             //WE FILL THE LABEL WITH FILLED ARRAY QUES[]
-             lbl1.Text= ques[0];
-          lbl2.Text = ques[1];
-             lbl3.Text= ques[2];
-           lbl4.Text= ques[3];
+             lbl1.Text= question[0];
+          lbl2.Text = question[1];
+             lbl3.Text= question[2];
+           lbl4.Text= question[3];
 
             //WE CALL THE METHOD MATCH FROM IDENTIFYNG CALL NUMBERS AND WE FILL IT ON THE ANS ARRAY FOR ANSWERS
-            ans = icall.match(lbl1.Text,lbl2.Text,lbl3.Text,lbl4.Text,desc);
+            answer = icallNum.match(lbl1.Text,lbl2.Text,lbl3.Text,lbl4.Text,description);
             //AND WE FILL THE LABELS ABC USRD FOR ANSWERS WITH ANS ARRAY
-            lblA.Text = ans[0];
-            lblB.Text = ans[1];
-            lblC.Text = ans[2];
-            lblD.Text = ans[3];
-            lblE.Text = ans[4];
-            lblF.Text = ans[5];
-            lblG.Text = ans[6];
+            lblA.Text = answer[0];
+            lblB.Text = answer[1];
+            lblC.Text = answer[2];
+            lblD.Text = answer[3];
+            lblE.Text = answer[4];
+            lblF.Text = answer[5];
+            lblG.Text = answer[6];
 
             //WE ARE FILLING COMBOBOXES WITH CMB VAL
             cmb1.Items.AddRange(cmbVal);
@@ -119,7 +119,7 @@ namespace DeweyDecimalSystem
                     if (btnNxtD.Visible)
                     {
                         //WE INSTANTIATED ICALL CHECK METHOD THAT RETURNS TRUE IF CORRECT
-                        bool isChecked = icall.check(index1, index2, index3, index4, ans, ques);
+                        bool isChecked = icallNum.check(index1, index2, index3, index4, answer, question);
 
                         if (isChecked == true)
                         {
@@ -150,7 +150,7 @@ namespace DeweyDecimalSystem
                     {
                        //this else is checking the qnswers for the identifying description , for when description is questions
                        //bool is checked is calling the  method for check in idesc to check for correct
-                        bool isChecked = iDesc.check(index1, index2, index3, index4, ans, ques);
+                        bool isChecked = iDescription.check(index1, index2, index3, index4, answer, question);
 
                         if (isChecked == true)
                         {
@@ -218,21 +218,21 @@ namespace DeweyDecimalSystem
             btnNxtD.Hide();
            
             //so array ques will now inherit values from from idesc fill method  and will fill the labels used for questions with array ques
-            ques = iDesc.fill(desc);
-            lbl1.Text = ques[0];
-            lbl2.Text = ques[1];
-            lbl3.Text = ques[2];
-            lbl4.Text = ques[3];
+            question = iDescription.fill(description);
+            lbl1.Text = question[0];
+            lbl2.Text = question[1];
+            lbl3.Text = question[2];
+            lbl4.Text = question[3];
 
             //and ans will inherit values from iden description match method and will fill the labels for answers with array ans
-            ans = iDesc.match(lbl1.Text, lbl2.Text, lbl3.Text, lbl4.Text, desc);
-            lblA.Text = ans[0];
-            lblB.Text = ans[1];
-            lblC.Text = ans[2];
-            lblD.Text = ans[3];
-            lblE.Text = ans[4];
-            lblF.Text = ans[5];
-            lblG.Text = ans[6];
+            answer = iDescription.match(lbl1.Text, lbl2.Text, lbl3.Text, lbl4.Text, description);
+            lblA.Text = answer[0];
+            lblB.Text = answer[1];
+            lblC.Text = answer[2];
+            lblD.Text = answer[3];
+            lblE.Text = answer[4];
+            lblF.Text = answer[5];
+            lblG.Text = answer[6];
 
         }
 
@@ -245,20 +245,20 @@ namespace DeweyDecimalSystem
             pictureBox2.Visible = false;
             btnNxtC.Hide();
             btnNxtD.Show();
-            ques = icall.fill();
-            lbl1.Text = ques[0];
-            lbl2.Text = ques[1];
-            lbl3.Text = ques[2];
-            lbl4.Text = ques[3];
+            question = icallNum.fill();
+            lbl1.Text = question[0];
+            lbl2.Text = question[1];
+            lbl3.Text = question[2];
+            lbl4.Text = question[3];
            
-            ans = icall.match(lbl1.Text, lbl2.Text, lbl3.Text, lbl4.Text, desc);
-            lblA.Text = ans[0];
-            lblB.Text = ans[1];
-            lblC.Text = ans[2];
-            lblD.Text = ans[3];
-            lblE.Text = ans[4];
-            lblF.Text = ans[5];
-            lblG.Text = ans[6];
+            answer = icallNum.match(lbl1.Text, lbl2.Text, lbl3.Text, lbl4.Text, description);
+            lblA.Text = answer[0];
+            lblB.Text = answer[1];
+            lblC.Text = answer[2];
+            lblD.Text = answer[3];
+            lblE.Text = answer[4];
+            lblF.Text = answer[5];
+            lblG.Text = answer[6];
         }
 
         private void btnBack_Click(object sender, EventArgs e)

@@ -33,11 +33,14 @@ namespace DeweyDecimalSystem
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.btnCheck = new System.Windows.Forms.Button();
-            this.btnRestart = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblPnts = new System.Windows.Forms.Label();
+            this.upPictureBox = new System.Windows.Forms.PictureBox();
+            this.downPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -50,11 +53,11 @@ namespace DeweyDecimalSystem
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(317, 324);
             this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDown);
             // 
             // listBox2
             // 
+            this.listBox2.AllowDrop = true;
             this.listBox2.BackColor = System.Drawing.SystemColors.ControlText;
             this.listBox2.ForeColor = System.Drawing.SystemColors.Info;
             this.listBox2.FormattingEnabled = true;
@@ -79,19 +82,6 @@ namespace DeweyDecimalSystem
             this.btnCheck.UseVisualStyleBackColor = false;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
-            // btnRestart
-            // 
-            this.btnRestart.BackColor = System.Drawing.Color.Transparent;
-            this.btnRestart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRestart.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnRestart.Location = new System.Drawing.Point(27, 83);
-            this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(118, 47);
-            this.btnRestart.TabIndex = 3;
-            this.btnRestart.Text = "Restart";
-            this.btnRestart.UseVisualStyleBackColor = false;
-            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -102,16 +92,15 @@ namespace DeweyDecimalSystem
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.Color.Transparent;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnBack.Location = new System.Drawing.Point(420, 487);
+            this.btnBack.Location = new System.Drawing.Point(30, 83);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(102, 44);
+            this.btnBack.Size = new System.Drawing.Size(110, 47);
             this.btnBack.TabIndex = 5;
             this.btnBack.Text = "Return";
             this.btnBack.UseVisualStyleBackColor = false;
@@ -129,23 +118,51 @@ namespace DeweyDecimalSystem
             this.lblPnts.TabIndex = 6;
             this.lblPnts.Text = "0";
             // 
+            // upPictureBox
+            // 
+            this.upPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.upPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.upPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("upPictureBox.Image")));
+            this.upPictureBox.Location = new System.Drawing.Point(888, 242);
+            this.upPictureBox.Name = "upPictureBox";
+            this.upPictureBox.Size = new System.Drawing.Size(60, 59);
+            this.upPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.upPictureBox.TabIndex = 7;
+            this.upPictureBox.TabStop = false;
+            this.upPictureBox.Click += new System.EventHandler(this.upPictureBox_Click);
+            // 
+            // downPictureBox
+            // 
+            this.downPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.downPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.downPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("downPictureBox.Image")));
+            this.downPictureBox.Location = new System.Drawing.Point(888, 344);
+            this.downPictureBox.Name = "downPictureBox";
+            this.downPictureBox.Size = new System.Drawing.Size(60, 56);
+            this.downPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.downPictureBox.TabIndex = 8;
+            this.downPictureBox.TabStop = false;
+            this.downPictureBox.Click += new System.EventHandler(this.downPictureBox_Click);
+            // 
             // Replacing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(960, 543);
+            this.Controls.Add(this.downPictureBox);
+            this.Controls.Add(this.upPictureBox);
             this.Controls.Add(this.lblPnts);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Replacing";
             this.Text = "Replacing";
-            this.Load += new System.EventHandler(this.Replacing_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,9 +173,10 @@ namespace DeweyDecimalSystem
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Button btnCheck;
-        private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblPnts;
+        private System.Windows.Forms.PictureBox upPictureBox;
+        private System.Windows.Forms.PictureBox downPictureBox;
     }
 }

@@ -34,7 +34,7 @@ namespace DeweyDecimalSystem
 
         }
 
-        public string [] match(string txt1, string txt2, string txt3, string txt4,  string []desc)
+        public string [] match(string txt1, string txt2, string txt3, string txt4,  string []description)
         {
             //THIS METHOD WILL TAKE THE SUBSTRING OF EACH QUESTION LABEL AND USE IT AS POSITION FOR MY DESCRIPTION ARRAY TO GET THE 4 CORRECT ANSWERS 
 
@@ -63,13 +63,13 @@ namespace DeweyDecimalSystem
 
 
             //I AM GETTING THE THE DESCRIPTION IN THE POSITIONS THAT I GOT AND STORING IT IN OUR ARRAY FOR ANSWERS
-            array[0] = desc[p1];
-            array[1] = desc[p2];
-            array[2] = desc[p3];
-            array[3] = desc[p4];
-            array[4] = desc[fifth];
-            array[5] = desc[sixth];
-            array[6] = desc[seventh];
+            array[0] = description[p1];
+            array[1] = description[p2];
+            array[2] = description[p3];
+            array[3] = description[p4];
+            array[4] = description[fifth];
+            array[5] = description[sixth];
+            array[6] = description[seventh];
             
             //LASTLY SHUFFLING THE ARRAY SO ITS DISPLAYED RANDOMLY
             Random shuf = new Random();
@@ -80,20 +80,20 @@ namespace DeweyDecimalSystem
 
         }
 
-        public bool check(int i1,int i2, int i3, int i4, string[] ans, string[] ques)
+        public bool check(int i1,int i2, int i3, int i4, string[] answer, string[] question)
         {
             //THIS BOOL WILL TAKE INDEXES OF CHOOSEN ANSWER IN THE CMBVAL SO WE CAN USE IT AGAIN AS OUR POSITIONS TO ANSWERS ARRAY
             //FOR EXAMPLE IF THE USER CHOOSES "A" THE INDEX OF "A" IS "0", WE WILL USE TO GET THE ANSWER THAT WILL BE IN OUR "0" POSITION IN OUR ARRAY THAT WAS USED TO DISPLAY THE ANSWERS
             bool isChecked;//BOOL IS CHECKED WILL RETURN TRUE IF CONDITION IS MET
 
-            string key1 = ques[0];//KEYS WE REPRESENT AS QUESTION (CALL NUMBERS)AND WE AUTOMATICALY KNOW THE POSITIONS OF THE QUESTION IS 0,1,2 AND 3
-            string val1 = ans[i1];//VALUES WE REPRESENT AS ANSWERS (DESCRIPTIONS)
-            string key2 = ques[1];
-            string val2 = ans[i2];
-            string key3 = ques[2];
-            string val3 = ans[i3];
-            string key4 = ques[3];
-            string val4 = ans[i4];
+            string key1 = question[0];//KEYS WE REPRESENT AS QUESTION (CALL NUMBERS)AND WE AUTOMATICALY KNOW THE POSITIONS OF THE QUESTION IS 0,1,2 AND 3
+            string val1 = answer[i1];//VALUES WE REPRESENT AS ANSWERS (DESCRIPTIONS)
+            string key2 = question[1];
+            string val2 = answer[i2];
+            string key3 = question[2];
+            string val3 = answer[i3];
+            string key4 = question[3];
+            string val4 = answer[i4];
 
             //THIS IF AND ELSE STATEMENT WILL VALIDATE OUR QUESTIONS AND ANSWERS AND WILL RETURN TRUE IF THE PAIRS CONTAINS IN THE DICTIONARY
             if (ListClass.dictionaries[key1].Equals(val1) &&

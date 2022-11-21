@@ -14,7 +14,7 @@ namespace DeweyDecimalSystem
 {
     public partial class Replacing : Form
     {
-       
+        replacingClass replacecallnums = new replacingClass();
         public ArrayList callNumbers = new ArrayList(); //this array list will store all the call numbers
         //arr1 and arr2 will be used to store the items in listbox2 
         public string[] arr1 = new string[10];
@@ -39,39 +39,10 @@ namespace DeweyDecimalSystem
             callNumbers.Clear();
             lblPnts.Text = point.ToString();
 
-
-
             //We are just generating a string of numbers and letters and joining it together as a string line of call numbers
-            const string src = "ABCDEFGHIJKLMNUPQRSTUVXWYZ";
-            String callNum = "";
-            Random RNG = new Random();
-            Random RNG1 = new Random();
-
-            for (var a = 0; a < 10; a++)
-            {
-                callNum += "" + RNG1.Next(0, 9);
-                callNum += "" + RNG1.Next(0, 9);
-                callNum += "" + RNG1.Next(0, 9);
-                callNum += ".";//wait
-                for (var k = 0; k < 2; k++)
-                {
-                    callNum += "" + RNG1.Next(0, 9);
-                }
-                callNum += " ";
-                for (var i = 0; i < 3; i++)
-                {
-                    callNum += "" + src[RNG.Next(0, src.Length)];
-
-                }
-
-                CallNumbers c = new CallNumbers(callNum);
-                ListClass.callnum.Add(c);
-
-                callNumbers.Add(callNum); //this will store each call number in an array list
-                callNum = "";
-            }
-           
-
+            callNumbers = replacecallnums.createCallnums();
+          
+            //we getting the call numbrs from the list to the listbox
             foreach (var item in callNumbers)
             {
                 listBox1.Items.Add(item);
@@ -80,19 +51,7 @@ namespace DeweyDecimalSystem
 
          
 
-
-
-        }
-
-        private void Replacing_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+        } 
 
         private void listBox1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -117,18 +76,6 @@ namespace DeweyDecimalSystem
             listBox1.Items.Remove(e.Data.GetData(DataFormats.Text));
         }
 
-        private void btnRestart_Click(object sender, EventArgs e)
-        {
-            listBox1.Items.Clear();//this will clear out the items in the listbox before adding new ones
-            //this button allows the user to try again by replacing all of the data back to the previous listbox from the arraylist and clearing it from the other list box from the other listbox 
-            listBox2.Items.Clear();
-            foreach (var item in callNumbers)
-            {
-                listBox1.Items.Add(item);
-
-            }
-        }
-
         private void btnCheck_Click(object sender, EventArgs e)
         {
             string temp;
@@ -144,39 +91,14 @@ namespace DeweyDecimalSystem
                     arr2[k] = item + "";
                     k++;
                 }
+
+                ////this will sorth the order in array list 1 
+                replacecallnums.sorthOrder(arr1);
+
+                ////this will compare both arrays to check if they are in order
+                found = replacecallnums.compareArrays(arr1, arr2);
                  
-
-             //this will sorth the order in array list 1  
-                int l = arr1.Length;
-
-                for (int i = 0; i < l; i++)
-                {
-                    for (int j = 0; j < l - 1; j++)
-                    {
-                        if (arr1[j].CompareTo(arr1[j + 1]) > 0)
-                        {
-                            temp = arr1[j];
-                            arr1[j] = arr1[j + 1];
-                            arr1[j + 1] = temp;
-                        }
-                    }
-                }
-
-                //this will compare both arrays to check if they are in order
-                for (int b = 0; b < arr1.Length; b++)
-                {
-                    if (String.Equals(arr1[b], arr2[b]) == false)
-                    {
-                        found = true;
-                        break;
-                    }
-
-                }
-                list = arr1.ToList();
-
-
-               
-
+                list = arr1.ToList();//this is storing the sorthed arrray to a list
                 var br = new StringBuilder(); //this will build a string line for our arraylist to be displayed
                 foreach (var item in list)
                 {
@@ -194,28 +116,56 @@ namespace DeweyDecimalSystem
                     point = 15;
                     Points p = new Points(point);
                     ListClass.points.Add(p);
-                    MessageBox.Show("CONGRATULATIONS YOU WON " + point+ " POINTS!" + " \n" + "Check rewards for achievements!");
-                    btnRestart.Hide();
+                    MessageBox.Show("CONGRATULATIONS YOU WON " + point+ " POINTS!" + " \n" + "Check rewards for achievements!");                  
                     lblPnts.Text = point.ToString();
-
-
-
-
-                }
-                   
+                }       
             }
             else
             {
                 MessageBox.Show("Box 2 Incomplete, missing call numbers", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
-        {
+       
 
+        private void upPictureBox_Click(object sender, EventArgs e)
+        {
+            //this click even for the picture box to move up
+            
+            if(listBox2.SelectedIndex == -1)//this is checking if an item is selected
+            {
+                MessageBox.Show("No item is selected, please select an item to move", "Erros", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int newIndex = listBox2.SelectedIndex - 1;//this allows the item to move up by subtracting the index
+                if (newIndex < 0)//this will prevent exception from ocurring if newindex is less than 0 it will ignorw
+                    return;
+                object selecteditem = listBox2.SelectedItem;//this gets the selected item
+                listBox2.Items.Remove(selecteditem);//removes it
+                listBox2.Items.Insert(newIndex, selecteditem); //inserts again on the list with the new index
+                listBox2.SetSelected(newIndex, true); //keeps the item selected until he sselects another so the user doesnt have to select it all the time
+            }
+        }
+
+        private void downPictureBox_Click(object sender, EventArgs e)
+        {
+            //this click even for the picture box to move down
+            if (listBox2.SelectedIndex == -1)//this is checking if an item is selected
+            {
+                MessageBox.Show("No item is selected, please select an item to move", "Erros", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int newIndex = listBox2.SelectedIndex + 1;//this allows the item to move down by adding the index
+                if (newIndex >=listBox2.Items.Count)//this will prevent exception from ocurring if newindex is mpre than the items it will ignorw
+                    return;
+                object selecteditem = listBox2.SelectedItem;//this gets the selected item
+                listBox2.Items.Remove(selecteditem);//removes it
+                listBox2.Items.Insert(newIndex, selecteditem); //inserts again on the list with the new index
+                listBox2.SetSelected(newIndex, true); //keeps the item selected until he sselects another so the user doesnt have to select it all the time
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -226,15 +176,9 @@ namespace DeweyDecimalSystem
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
+     
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
 
 }

@@ -42,7 +42,9 @@ namespace DeweyDecimalSystem
 
         private void btnFindCallNum_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("COMING SOON!");
+            FindingCallNums fc = new FindingCallNums();
+            fc.Show();
+            this.Hide();
         }
 
         private void btnRwards_Click(object sender, EventArgs e)

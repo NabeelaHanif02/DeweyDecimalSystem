@@ -9,17 +9,17 @@ namespace DeweyDecimalSystem
     class IdentifyingDesc
     {
         //I USED THIS CLASS TO GENERATE QUESTIONS ANSWERS AND CHECK FOR DESCRIPTIONS AS QUESTIONS AND CALL NUMBERS AS ANSWERS
-        public string[] fill(string[] desc)
+        public string[] fill(string[] description)
         {
        
             //THIS METHOD WILL JUST SHUFFLE OUR ARRAY OF DESCRIPTIONS AND STORE IT IN AN ARRAY OF QUESTIONS TO GET THEM RANDOMLY PICKED
             string[] array = new string[4];
             Random shuf = new Random();
-            desc = desc.OrderBy(x => shuf.Next()).ToArray();
-            array[0] = desc[0];
-            array[1] = desc[1];
-            array[2] = desc[2];
-            array[3] = desc[3];
+            description = description.OrderBy(x => shuf.Next()).ToArray();
+            array[0] = description[0];
+            array[1] = description[1];
+            array[2] = description[2];
+            array[3] = description[3];
 
 
             return array;
@@ -138,20 +138,20 @@ namespace DeweyDecimalSystem
         }
 
 
-        public bool check(int i1, int i2, int i3, int i4, string[] ans, string[] ques)
+        public bool check(int i1, int i2, int i3, int i4, string[] answer, string[] question)
         {
             //THIS BOOL WILL TAKE INDEXES OF CHOOSEN ANSWER IN THE CMBVAL SO WE CAN USE IT AGAIN AS OUR POSITIONS TO ANSWERS ARRAY
             //FOR EXAMPLE IF THE USER CHOOSES "A" THE INDEX OF "A" IS "0", WE WILL USE IT TO GET THE ANSWER THAT WILL BE IN OUR "0" POSITION IN OUR ARRAY THAT WAS USED TO DISPLAY THE ANSWERS
 
             bool isChecked;//BOOL IS CHECKED WILL RETURN TRUE IF CONDITION IS MET
-            string val1 = ques[0];//VALUES WE REPRESENT AS QUESTIONS HERE (DESCRIPTIONS)
-            string key1 = ans[i1];//KEYS WE REPRESENT AS ANSWERS HERE (CALL NUMBERS)AND WE AUTOMATICALY KNOW THE POSITIONS OF THE QUESTION IS 0,1,2 AND 3
-            string val2 = ques[1];
-            string key2 = ans[i2];
-            string val3 = ques[2];
-            string key3 = ans[i3];
-            string val4 = ques[3];
-            string key4 = ans[i4];
+            string val1 = question[0];//VALUES WE REPRESENT AS QUESTIONS HERE (DESCRIPTIONS)
+            string key1 = answer[i1];//KEYS WE REPRESENT AS ANSWERS HERE (CALL NUMBERS)AND WE AUTOMATICALY KNOW THE POSITIONS OF THE QUESTION IS 0,1,2 AND 3
+            string val2 = question[1];
+            string key2 = answer[i2];
+            string val3 = question[2];
+            string key3 = answer[i3];
+            string val4 = question[3];
+            string key4 = answer[i4];
 
             //THIS IF AND ELSE WILL VALIDATE IF THE KEYS AND THEIR PAIRS VALUES EXITS AND CORRESPOND TO TGE ANSWEERS AND QUESTION
             if (ListClass.dictionaries[key1].Equals(val1) &&

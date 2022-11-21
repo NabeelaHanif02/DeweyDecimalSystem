@@ -61,36 +61,36 @@ namespace DeweyDecimalSystem
             // 
             this.cmb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb1.FormattingEnabled = true;
-            this.cmb1.Location = new System.Drawing.Point(270, 169);
+            this.cmb1.Location = new System.Drawing.Point(577, 169);
             this.cmb1.Name = "cmb1";
-            this.cmb1.Size = new System.Drawing.Size(87, 28);
+            this.cmb1.Size = new System.Drawing.Size(85, 28);
             this.cmb1.TabIndex = 4;
             // 
             // cmb2
             // 
             this.cmb2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb2.FormattingEnabled = true;
-            this.cmb2.Location = new System.Drawing.Point(270, 212);
+            this.cmb2.Location = new System.Drawing.Point(577, 203);
             this.cmb2.Name = "cmb2";
-            this.cmb2.Size = new System.Drawing.Size(87, 28);
+            this.cmb2.Size = new System.Drawing.Size(85, 28);
             this.cmb2.TabIndex = 5;
             // 
             // cmb3
             // 
             this.cmb3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb3.FormattingEnabled = true;
-            this.cmb3.Location = new System.Drawing.Point(270, 251);
+            this.cmb3.Location = new System.Drawing.Point(577, 251);
             this.cmb3.Name = "cmb3";
-            this.cmb3.Size = new System.Drawing.Size(87, 28);
+            this.cmb3.Size = new System.Drawing.Size(85, 28);
             this.cmb3.TabIndex = 6;
             // 
             // cmb4
             // 
             this.cmb4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb4.FormattingEnabled = true;
-            this.cmb4.Location = new System.Drawing.Point(270, 294);
+            this.cmb4.Location = new System.Drawing.Point(577, 285);
             this.cmb4.Name = "cmb4";
-            this.cmb4.Size = new System.Drawing.Size(87, 28);
+            this.cmb4.Size = new System.Drawing.Size(85, 28);
             this.cmb4.TabIndex = 7;
             // 
             // btnCheck
@@ -98,7 +98,7 @@ namespace DeweyDecimalSystem
             this.btnCheck.BackColor = System.Drawing.Color.Transparent;
             this.btnCheck.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCheck.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnCheck.Location = new System.Drawing.Point(206, 376);
+            this.btnCheck.Location = new System.Drawing.Point(397, 364);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Size = new System.Drawing.Size(151, 44);
             this.btnCheck.TabIndex = 9;
